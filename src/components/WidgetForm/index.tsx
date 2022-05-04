@@ -69,8 +69,7 @@ export function FormWidget() {
             />
           )}
         </>
-      )
-      }
+      )}
 
       <footer className="text-xs text-neutral-400">
         Feito com ♥ pela <a href="https://rocketseat.com.br" className="underline underline-offset-2"> Rocketseat </a>
