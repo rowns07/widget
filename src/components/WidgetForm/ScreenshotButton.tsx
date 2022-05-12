@@ -5,27 +5,27 @@ import { Loading } from "../Loading";
 
 interface ScreenshotButtonProps {
   screenShot: string | null;
-  onScreenshootTook: (screenshoot: string | null) => void;
+  onScreenshotTook: (screenshot: string | null) => void;
 }
 
-export function ScreenshotButton({ screenShot, onScreenshootTook }: ScreenshotButtonProps) {
-  const [isTakingScreenshot, setIsTakingScreenshoot] = useState(false);
+export function ScreenshotButton({ screenShot, onScreenshotTook }: ScreenshotButtonProps) {
+  const [isTakingScreenshot, setIsTakingScreenshot] = useState(false);
 
   async function handleTakeScreenshot() {
-    setIsTakingScreenshoot(true);
+    setIsTakingScreenshot(true);
 
     const canvas = await html2canvas(document.querySelector('html')!);
     const base64image = canvas.toDataURL('image/png');
 
-    onScreenshootTook(base64image);
-    setIsTakingScreenshoot(false);
+    onScreenshotTook(base64image);
+    setIsTakingScreenshot(false);
   }
   if (screenShot) {
     return (
       <button
         type="button"
         className="p-1 w-10 rounded-md border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors"
-        onClick={()=> onScreenshootTook}
+        onClick={()=> onScreenshotTook}
         style={{
           backgroundImage: `url(${screenShot})`,
           backgroundPosition: 'right bottom',
