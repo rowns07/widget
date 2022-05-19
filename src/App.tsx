@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { FeedbackList } from "./components/FeedbackList"
 import { Login } from "./components/Login"
+import { Menu } from "./components/Menu"
 import { ThemeButton } from "./components/ThemeButton"
 import { Widget } from "./components/Widget"
 import { ThemeContextProvider } from "./context/themeContext"
@@ -8,9 +9,10 @@ import { ThemeContextProvider } from "./context/themeContext"
 function App() {
 
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <ThemeContextProvider>
-        <ThemeButton/>
+        <Menu />
+        <ThemeButton />
 
         <Routes>
           <Route path="/" element={<Login />} />
@@ -19,7 +21,7 @@ function App() {
 
         </Routes>
       </ThemeContextProvider>
-      </BrowserRouter>
+    </BrowserRouter>
   )
 
 }
