@@ -1,6 +1,7 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../context/themeContext";
 import { api } from "../lib/api";
+import { ThemeButton } from "./ThemeButton";
 
 type FeedbackProps = {
   id: string,
@@ -26,7 +27,7 @@ export function FeedbackList() {
 
   return (
     <>
-
+      <ThemeButton />
       <h2 className="w-4/5 m-auto text-neutral-700 dark:text-white">FEEDBACK LIST</h2>
       <div className="flex items-center justify-around w-4/5 m-auto flex-wrap flex-row">
 
