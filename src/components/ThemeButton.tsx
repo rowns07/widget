@@ -16,10 +16,6 @@ export function ThemeButton() {
         {theme === "light" ? <Moon /> : <Sun />}
       </Switch>
 
-      <div className='bg-zinc-400 dark:bg-zinc-800 p-5 m-4 text-red-300 dark:text-red-700 '>
-
-        {theme === "light" ? "light -- mode" : "dark -- mode"}
-      </div>
     </>
   )
 }

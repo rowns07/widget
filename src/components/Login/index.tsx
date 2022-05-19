@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/themeContext";
-import { ThemeButton } from "../ThemeButton";
 
 export function Login() {
   const { theme, darkSide, changedTheme } = useContext(ThemeContext);
@@ -14,17 +13,18 @@ export function Login() {
 
       <div >
 
-        <button 
-        className="bg-sky-500/100 px-4 rounded-sm"
-        onClick={() => navegar('/widget')}>
-           navegar</button>
-
-        <ThemeButton />
+        <button
+          className="bg-sky-500/100 px-4 rounded-sm"
+          onClick={() => navegar('/widget')}>
+          navegar</button>
 
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md w-full space-y-8 bg-slate-400 rounded-sm p-4">
+          <div className="max-w-md w-full space-y-8 ">
 
-            <form className="mt-8 space-y-6" action="#" method="POST">
+            <form
+              className="mt-8 space-y-6"
+              onSubmit={() => navegar('/list')}
+            >
 
               <div className="rounded-md shadow-sm -space-y-px">
                 <div>

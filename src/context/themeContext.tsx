@@ -21,21 +21,27 @@ export function ThemeContextProvider({
   const colorTheme = theme === 'dark' ? 'light' : 'dark';
   const [darkSide, setDarkSide] = useState<boolean>(colorTheme === 'light' ? true : false);
 
-  const teste = window.document.documentElement;
+  const getHTMLElement = window.document.documentElement;
 
   function changedTheme() {
     setTheme(colorTheme);
     localStorage.setItem('tema', colorTheme);
 
     if (theme == 'dark') {
-      teste.classList.remove('dark');
-
+      getHTMLElement.classList.remove('dark');
     } else {
-      teste.classList.add('dark');
-
+      getHTMLElement.classList.add('dark');
     }
-    console.log(darkSide, '-', colorTheme)
   }
+
+  useEffect(() => {
+
+    if (theme == 'dark') {
+      getHTMLElement.classList.add('dark');
+    } else {
+      getHTMLElement.classList.remove('dark');
+    }
+  })
 
   return (
     <ThemeContext.Provider value={{ theme, darkSide, changedTheme }}>
