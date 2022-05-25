@@ -1,27 +1,28 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { FeedbackList } from "./components/FeedbackList"
-import { Login } from "./components/Login"
-import { Menu } from "./components/Menu"
-import { ThemeButton } from "./components/ThemeButton"
-import { Widget } from "./components/Widget"
+import { Route } from "react-router-dom"
+import AuthContext, { AuthProvider } from "./context/auth"
 import { ThemeContextProvider } from "./context/themeContext"
+import Routes from "./routes"
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <ThemeContextProvider>
-        <Menu />
-        <ThemeButton />
+    // <BrowserRouter>
+    //   <ThemeContextProvider>
+    //     <Menu />
+    //     <ThemeButton />
 
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/list" element={<FeedbackList />} />
-          <Route path="/widget" element={<Widget />} />
+    //     <Routes>
+    //       <Route path="/" element={<Login />} />
+    //       <Route path="/list" element={<FeedbackList />} />
+    //       <Route path="/widget" element={<Widget />} />
 
-        </Routes>
-      </ThemeContextProvider>
-    </BrowserRouter>
+    //     </Routes>
+    //   </ThemeContextProvider>
+    // </BrowserRouter>
+
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   )
 
 }
