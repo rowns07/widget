@@ -14,8 +14,8 @@ export function Login() {
     email: string;
     password: string
   }
-  const [email, setEmail] = useState<dataProps>();
-  const [password, setPassword] = useState<dataProps>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const [isInvalidUser, setIsInvalidUser] = useState<boolean>(false)
 
