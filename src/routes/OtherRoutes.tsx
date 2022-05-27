@@ -8,11 +8,10 @@ const OtherRoutes: React.FC = () => {
     <BrowserRouter>
       <Menu />
       <Routes>
-
         <Route path="/" element={<FeedbackList />} />
         <Route path="/widget" element={<Widget />} />
+        <Route path="*" element={<FeedbackList />} />
       </Routes>
-
     </BrowserRouter>
   )
 }

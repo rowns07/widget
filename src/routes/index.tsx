@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import AuthContext from "../context/auth";
+import { useAuth } from "../hooks/auth";
 import OtherRoutes from "./OtherRoutes";
-import SignRoutes from "./SignRoutes"
+import SignRoutes from "./SignRoutes";
 
 const Routes: React.FC = () => {
-  const { signed } = useContext(AuthContext)
+  const { signed } = useAuth();
   return signed ? <OtherRoutes /> : <SignRoutes />
 }
 

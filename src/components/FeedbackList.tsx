@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
-import { Widget } from "./Widget";
 
 type FeedbackProps = {
   id: string,
@@ -26,7 +25,6 @@ export function FeedbackList() {
 
   return (
     <>
-      <Widget />
       <h1 className="w-4/5  m-auto text-neutral-700 dark:text-neutral-200 mt-5 ">FEEDBACKS</h1>
       <div className="flex items-center justify-around w-4/5 m-auto flex-wrap flex-row">
 

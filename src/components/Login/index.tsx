@@ -1,25 +1,25 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { WarningCircle } from "phosphor-react";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../../context/auth";
+import { useAuth } from "../../hooks/auth";
 
 export function Login() {
 
-  const context = useContext(AuthContext);
+  const context = useAuth();
   const navegar = useNavigate();
   const auth = getAuth();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  function handleLogout() {
-    context.SignOut();
-  }
 
   type dataProps = {
     email: string;
     password: string
   }
+  const [email, setEmail] = useState<dataProps>();
+  const [password, setPassword] = useState<dataProps>();
+
+  const [isInvalidUser, setIsInvalidUser] = useState<boolean>(false)
+
+
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,28 +28,25 @@ export function Login() {
         navegar('/widget')
         console.log('entrou', resp)
       })
-      .catch((erro) => console.log('DEU ERRO', erro))
+      .catch((erro) => {
+        setIsInvalidUser(true);
+        console.log('DEU ERRO', erro)
+      })
 
   };
 
   return (
     <>
 
-      <button
-        className="bg-sky-500/100 px-4 rounded-sm"
-        onClick={() => navegar('/widget')}>
-        navegar</button>
-
-
-      <button
-        className="bg-sky-500/100 px-4 rounded-sm m-5 p-3"
-        onClick={handleLogout}>
-        SAIR
-      </button>
-
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 ">
+        <div className="max-w-md w-full space-y-8">
 
+          {isInvalidUser &&
+            <div className="flex items-center justify-center bg-red-200 p-2 text-red-700 font-serif text-center">
+              <WarningCircle size={32} />
+              <h2 className="p-3"> Usuario ou senha invalida</h2>
+            </div>
+          }
           <form
             className="mt-8 space-y-6"
             onSubmit={handleSubmit}
@@ -100,6 +97,7 @@ export function Login() {
               </button>
             </div>
           </form>
+
         </div>
       </div>
 
